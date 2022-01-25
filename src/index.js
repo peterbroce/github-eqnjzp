@@ -1,4 +1,4 @@
-import css from './css/com.sass';
+import css from './css/com.css';
 let a = 0,
   b = 1;
 let c = a + b;
@@ -26,5 +26,3 @@ window.onload = function () {
   // });
 };
 console.log('');
-
-

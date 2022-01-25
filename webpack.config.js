@@ -2,7 +2,6 @@ let webpack = require('webpack');
 let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
-let ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 let loader = [MiniCssExtractPlugin.loader, 'css-loader'];
 
 module.exports = {
@@ -16,10 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.(css|s[ac]ss)$/,
-        use: ExtractTextWebpackPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader', 'postcss-loader'],
-        }),
+        use: loader,
       },
       {
         test: /\.js$/,
@@ -33,12 +29,7 @@ module.exports = {
       template: './src/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'index.sass',
-    }),
-    new ExtractTextWebpackPlugin({
-      filename: 'css/[name].[hash].css',
-      disable: false,
-      allChunks: true,
+      filename: 'index.css',
     }),
   ],
   devServer: {
